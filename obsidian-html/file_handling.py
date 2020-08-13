@@ -1,7 +1,7 @@
 import os
 import markdown2
 from .format import format_internal_links, format_internal_aliased_links, format_internal_header_links, format_internal_header_links, format_tags
-from utils import slug_case
+from .utils import slug_case
 
 def format_file(file_name, vault_root, out_dir):
     with open(vault_root + "/" + file_name) as f:
