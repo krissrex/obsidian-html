@@ -1,6 +1,7 @@
 import os
 import sys
-from .file_handling import find_files, format_file
+from file_handling import format_file
+from utils import find_files
 
 
 def main(vault_root, out_dir, extra_folders=[]):
