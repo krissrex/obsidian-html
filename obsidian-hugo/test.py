@@ -1,5 +1,5 @@
 import markdown2
-from format import format_internal_links, format_internal_aliased_links
+from format import format_internal_links, format_internal_aliased_links, format_tags
 
 obs = """![](https://toriavey.com/images/2011/01/Falafel-10-640x480-1.jpg)
 
@@ -46,7 +46,8 @@ Oppskrift for **6** porsjoner (5 falafler per porsjon):
 """
 
 md = format_internal_links(
-        format_internal_aliased_links(obs))
+        format_internal_aliased_links(
+            format_tags(obs)))
 
 md = markdown2.markdown(md)
 
