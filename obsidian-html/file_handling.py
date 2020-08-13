@@ -1,8 +1,9 @@
 import os
-from format import format_internal_links, format_internal_aliased_links, format_internal_header_links, format_internal_header_links, format_tags
+import markdown2
+from .format import format_internal_links, format_internal_aliased_links, format_internal_header_links, format_internal_header_links, format_tags
 from utils import slug_case
 
-def format_file(file_name, vault_root):
+def format_file(file_name, vault_root, out_dir):
     with open(vault_root + "/" + file_name) as f:
         doc = f.read()
 
@@ -11,9 +12,10 @@ def format_file(file_name, vault_root):
             format_internal_header_links(
                 format_tags(doc))))
 
-    html = markdown2.markdown(doc, extras=["break-on-newline, fenced-code-blocks, header-ids, strike, tables"]
+    html = markdown2.markdown(doc, extras=["break-on-newline, fenced-code-blocks, header-ids, strike, tables"])
 
-    with open(os.path.dirname(vault_root) + "/html/" + slug_case(file_name), "w") as f:
+    html_file_name = slug_case(file_name.replace(".md", "")) + ".html"
+    with open(out_dir + "/" + html_file_name, "w") as f:
         f.write(html)
 
 def find_files(vault_root, extra_folders):
