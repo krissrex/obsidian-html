@@ -1,17 +1,16 @@
 import os
 import sys
-from file_handling import *
+from .file_handling import *
 
-def main(vault_root, extra_folders = []):
-    parent_of_vault = os.path.dirname(vault_root)
-    if not os.path.exists(parent_of_vault + "/html"):
-        os.makedirs(parent_of_vault + "/hugo")
+def main(vault_root, out_dir, extra_folders = []):
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
     for folder in extra_folders:
-        if not os.path.exists(parent_of_vault + "/hugo/" + folder):
-            os.makedirs(parent_of_vault + "/hugo/" + folder)
+        if not os.path.exists(out_dir + "/" + folder):
+            os.makedirs(out_dir + "/" + folder)
 
     for md_file in find_files(vault_root, extra_folders):
-        format_file(md_file, vault_root)
+        format_file(md_file, vault_root, out_dir)
 
 if __name__ == "__main__":
-    main(sys.argv[1], extra_folders = sys.argv[2:])
+    main(sys.argv[1], sys.argv[2] extra_folders = sys.argv[3:])
