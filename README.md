@@ -28,3 +28,4 @@ python -m obsidian-html <path to vault> <path to place html files> <extra folder
 - [ ] Support the `![[]]` embedding syntax (perhaps using iframe or some similar method)
 - [ ] Upload to PyPi
 - [ ] Write a GitHub Actions workflow to automate the process from vault to a publish GitHub Pages page
+- [ ] Support extra features added by the user through YAML metadatYAML metadata
