@@ -5,4 +5,4 @@ def slug_case(text):
     return re.sub(r'[\W_]+', '-', text)
 
 def md_link(text, link):
-    return "[" + text + "](" + link + ")
+    return "[" + text + "](" + link + ")"
