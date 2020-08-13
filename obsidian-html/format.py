@@ -1,23 +1,23 @@
 import regex as re
-from .utils import slug_case, md_link
+from utils import slug_case, md_link
 
 
 def format_internal_links(document):
-    """Links that are neither aliased, nor links to headers"""
+    """Formats Obsidian style links that are neither aliased, nor links to headers"""
     matches = re.finditer("\\[{2}([^|#]*?)\\]{2}", document)
 
     return obsidian_to_commonmark_links(document, matches, no_groups=1)
 
 
 def format_internal_aliased_links(document):
-    """Aliased links"""
+    """Formats Obsidian style aliased links"""
     matches = re.finditer("\\[{2}([^|#\\]]*?)\\|(.*?)\\]{2}", document)
 
     return obsidian_to_commonmark_links(document, matches)
 
 
 def format_internal_header_links(document):
-    """Header links (TODO: Headers need to be slug case formatted, so this does not work right now)"""
+    """Formats Obsidian style header links"""
     matches = re.finditer("\\[{2}([^|#\\]]*?)#(.*?)\\]{2}", document)
 
     return obsidian_to_commonmark_links(document, matches)

@@ -1,5 +1,6 @@
 import markdown2
-from format import format_internal_links, format_internal_aliased_links, format_tags
+from backlinks import extract_links_from_file
+from obsidian-html import Vault
 
 obs = """![](https://toriavey.com/images/2011/01/Falafel-10-640x480-1.jpg)
 
@@ -45,10 +46,6 @@ Oppskrift for **6** porsjoner (5 falafler per porsjon):
 #Oppskrift
 """
 
-md = format_internal_links(
-        format_internal_aliased_links(
-            format_tags(obs)))
+links = extract_links_from_file(obs)
 
-md = markdown2.markdown(md)
-
-print(md)
+print(links)
