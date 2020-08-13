@@ -10,5 +10,5 @@ setup(name='obsidian-html',
     packages=['obsidian-html'],
     install_requires=[
         'markdown2'
-    ]
+    ],
     zip_safe=False)
