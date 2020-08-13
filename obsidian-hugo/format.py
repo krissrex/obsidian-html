@@ -5,7 +5,7 @@ def format_internal_links(document):
     """Links that are neither aliased, nor links to headers"""
     matches = re.finditer("\\[{2}([^|#]*?)\\]{2}", document)
 
-    return obsidian_to_commonmark_link(document, matches)
+    return obsidian_to_commonmark_link(document, matches, no_groups = 1)
 
 def format_internal_aliased_links(document):
     """Aliased links"""
@@ -19,9 +19,9 @@ def format_internal_header_links(document):
 
     return obsidian_to_commonmark_link(document, matches)
 
-def obsidian_to_commonmark_link(document, matches):
+def obsidian_to_commonmark_link(document, matches, no_groups = 2):
     for match in matches:
-        text = match.group(2) if match.group(2) else match.group(1)
+        text = match.group(no_groups)
         link = slug_case(match.group(1))
         document = document.replace(match.group(), md_link(text, link))
 
