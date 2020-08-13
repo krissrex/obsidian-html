@@ -14,11 +14,7 @@ inside it.
 
 ## Usage
 
-To use `obsidian-html`, just run
-
-```
-python -m obsidian-html <path to vault> <path to place html files> <extra folders in vault you want included>
-```
+This package is still under construction, so usage isn't very simple right now. If you want you can clone the repo and figure out how, but it might be a bit broken.
 
 ## To do
 
