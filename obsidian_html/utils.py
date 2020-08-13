@@ -5,7 +5,7 @@ import os
 def slug_case(text):
     text = text.replace(".", "dot")
     text = text.replace("_", "-")
-    return re.sub(r'[^\w\-/]+', '-', text)
+    return re.sub(r'[^\w\-/]+', '-', text).lower()
 
 
 def md_link(text, link):

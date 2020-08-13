@@ -63,7 +63,9 @@ def htmlify(document):
         # GFM tables.
         "tables",
         # Support for lists that start without a newline directly above.
-        "cuddled-lists"
+        "cuddled-lists",
+        # Have to support Markdown inside html tags
+        "markdown-in-html"
     ]
 
     html = markdown2.markdown(document, extras=markdown2_extras)
