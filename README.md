@@ -22,7 +22,7 @@ python -m obsidian-html <path to vault> <path to place html files> <extra folder
 
 ## To do
 
-- [ ] Generate backlinks
+- [x] Generate backlinks
 - [ ] Support HTML template (which will make adding CSS much easier)
 - [ ] Support local attachments
 - [ ] Support the `![[]]` embedding syntax (perhaps using iframe or some similar method)
