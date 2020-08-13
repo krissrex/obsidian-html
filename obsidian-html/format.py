@@ -1,5 +1,5 @@
 import regex as re
-from utils import slug_case, md_link
+from .utils import slug_case, md_link
 
 def format_internal_links(document):
     """Links that are neither aliased, nor links to headers"""

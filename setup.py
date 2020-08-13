@@ -9,6 +9,7 @@ setup(name='obsidian-html',
     license='MIT',
     packages=['obsidian-html'],
     install_requires=[
-        'markdown2'
+        'markdown2',
+        'regex'
     ],
     zip_safe=False)
