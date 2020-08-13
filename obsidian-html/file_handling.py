@@ -12,7 +12,7 @@ def format_file(file_name, vault_root, out_dir):
             format_internal_header_links(
                 format_tags(doc))))
 
-    html = markdown2.markdown(doc, extras=["break-on-newline, fenced-code-blocks, header-ids, strike, tables"])
+    html = markdown2.markdown(doc, extras=["break-on-newline", "fenced-code-blocks", "header-ids", "strike", "tables"])
 
     html_file_name = slug_case(file_name.replace(".md", "")) + ".html"
     with open(out_dir + "/" + html_file_name, "w") as f:
