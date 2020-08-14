@@ -1,6 +1,6 @@
 import os
-from utils import find_files, slug_case, find_backlinks, md_link
-from format import htmlify
+from .utils import find_files, slug_case, find_backlinks, md_link
+from .format import htmlify
 
 
 class Vault:
@@ -9,8 +9,10 @@ class Vault:
         self.extra_folders = extra_folders
         self._add_backlinks()
 
-        with open(html_template) as f:
-            self.html_template = f.read()
+        self.html_template = html_template
+        if html_template:
+            with open(html_template) as f:
+                self.html_template = f.read()
 
     def _add_backlinks(self):
         for note in self.notes:

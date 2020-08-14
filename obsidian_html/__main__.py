@@ -1,21 +1,31 @@
-import os
 import sys
-from file_handling import format_file
-from utils import find_files
+import argparse
+from .Vault import Vault
 
+parser = argparse.ArgumentParser(
+    prog="obsidian-html",
+    description="Converts an Obsidian vault into HTML")
 
-def main(vault_root, out_dir, extra_folders=[]):
-    # Ensure out_dir exists as well as its sub-folders.
-    if not os.path.exists(out_dir):
-        os.makedirs(out_dir)
-    for folder in extra_folders:
-        if not os.path.exists(out_dir + "/" + folder):
-            os.makedirs(out_dir + "/" + folder)
+parser.add_argument("Vault",
+                    metavar="vault",
+                    type=str,
+                    default=".",
+                    help="Path to the vault root")
 
-    # Format each markdown-file.
-    for md_file in find_files(vault_root, extra_folders):
-        format_file(md_file, vault_root, out_dir)
+parser.add_argument("-o", "--output_dir",
+                    default=sys.argv[1] + "/html",
+                    help="Path to place the generated HTML")
 
+parser.add_argument("-t", "--template",
+                    default=None,
+                    help="Path to HTML template")
 
-if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], extra_folders=sys.argv[3:])
+parser.add_argument("-d", "--dirs",
+                    nargs="+",
+                    default=[],
+                    help="Extra sub-directories in vault that you want included")
+
+args = parser.parse_args()
+
+vault = Vault(args.Vault, extra_folders=args.dirs, html_template=args.template)
+vault.export_html(args.output_dir)

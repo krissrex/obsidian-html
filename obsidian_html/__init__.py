@@ -1,2 +1,2 @@
 import __main__
-from Vault import Vault
+from .Vault import Vault

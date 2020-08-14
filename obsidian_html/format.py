@@ -1,6 +1,6 @@
 import regex as re
 import markdown2
-from utils import slug_case, md_link
+from .utils import slug_case, md_link
 
 
 def format_internal_links(document):
