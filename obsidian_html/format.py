@@ -52,9 +52,9 @@ def obsidian_to_commonmark_links(document, matches, no_groups=2):
 def htmlify(document):
     # Formatting of Obsidian tags and links.
     document = format_tags(
-        format_internal_links(
+        format_internal_header_links(
             format_internal_aliased_links(
-                format_internal_header_links(
+                format_internal_links(
                     document))))
 
     markdown2_extras = [
