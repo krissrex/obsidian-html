@@ -4,10 +4,13 @@ from format import htmlify
 
 
 class Vault:
-    def __init__(self, vault_root, extra_folders=[]):
+    def __init__(self, vault_root, extra_folders=[], html_template=None):
         self.notes = find_files(vault_root, extra_folders, no_extension=True)
         self.extra_folders = extra_folders
         self._add_backlinks()
+
+        with open(html_template) as f:
+            self.html_template = f.read()
 
     def _add_backlinks(self):
         for note in self.notes:
@@ -25,7 +28,7 @@ class Vault:
             content_html = htmlify(note["content"])
 
             notes_html.append(
-                {"filename": filename_html, "content": content_html})
+                {"filename": filename_html, "content": content_html, "title": note["filename"]})
 
         return notes_html
 
@@ -40,5 +43,10 @@ class Vault:
         notes_html = self.convert_to_html()
 
         for note in notes_html:
+            if self.html_template:
+                html = self.html_template.format(
+                    title=note["title"], content=note["content"])
+            else:
+                html = note["content"]
             with open(os.path.join(out_dir, note["filename"]), "w") as f:
-                f.write(note["content"])
+                f.write(html)
