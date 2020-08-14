@@ -6,9 +6,7 @@ This is a short Python script to convert an [Obsidian](https://obsidian.md/) vau
 
 Not available on PyPi yet, so for now you'll have to clone this repository and run:
 
-```
-pip install .
-```
+  pip install .
 
 inside it.
 
@@ -25,3 +23,7 @@ This package is still under construction, so usage isn't very simple right now. 
 - [ ] Upload to PyPi
 - [ ] Write a GitHub Actions workflow to automate the process from vault to a publish GitHub Pages page
 - [ ] Support extra features added by the user through YAML metadatYAML metadata
+
+## Known issues
+
+- Links in headers lead to weird header ids, and thus malfunctioning header links from other pages.
