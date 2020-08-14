@@ -17,7 +17,7 @@ This package is still under construction, so usage isn't very simple right now. 
 ## To do
 
 - [x] Generate backlinks
-- [ ] Support HTML template (which will make adding CSS much easier)
+- [x] Support HTML template (which will make adding CSS much easier)
 - [ ] Support local attachments
 - [ ] Support the `![[]]` embedding syntax (perhaps using iframe or some similar method)
 - [ ] Upload to PyPi
