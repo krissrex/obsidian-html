@@ -76,4 +76,7 @@ def htmlify(document):
 
     html = markdown2.markdown(document, extras=markdown2_extras)
 
+    # Wrapping converted markdown in a div for styling
+    html = f"<div id=\"content\">{html}</div>"
+
     return html
