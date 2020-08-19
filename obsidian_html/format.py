@@ -71,7 +71,9 @@ def htmlify(document):
         # Support for lists that start without a newline directly above.
         "cuddled-lists",
         # Have to support Markdown inside html tags
-        "markdown-in-html"
+        "markdown-in-html",
+        # Disable formatting via the _ character. Necessary for code an TeX
+        "code-friendly"
     ]
 
     html = markdown2.markdown(document, extras=markdown2_extras)
