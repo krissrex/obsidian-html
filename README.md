@@ -70,3 +70,4 @@ Make a GitHub Actions workflow using the YAML below, and your vault will be publ
 ## Known issues
 
 - Links in headers lead to weird header ids, and thus malfunctioning header links from other pages.
+- Escaped curly braces inside math blocks are removed for some reason. Thus, no curly braces are visible in KaTeX.
