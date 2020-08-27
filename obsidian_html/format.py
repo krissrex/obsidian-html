@@ -57,6 +57,11 @@ def htmlify(document):
                 format_internal_links(
                     document))))
 
+    # Escaped curly braces lose their escapes when formatted. I'm suspecting
+    # this is from markdown2, as I haven't found anyplace which could
+    # do this among my own formatter functions. Therefore I double escape them.
+    document = document.replace(r"\{", r"\\{").replace(r"\}", r"\\}")
+
     markdown2_extras = [
         # Parser should work withouth strict linebreaks.
         "break-on-newline",
