@@ -60,4 +60,6 @@ def find_backlinks(target_note_name, all_notes):
             backlinks.append({"text": note["filename"].replace(".md", ""),
                               "link": slug_case(note["filename"].replace(".md", ""))})
 
+    backlinks = sorted(backlinks, key=lambda x: x['text'])
+
     return backlinks
