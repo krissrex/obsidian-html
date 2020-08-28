@@ -37,7 +37,7 @@ def find_md_files(root, no_extension, is_extra_folder=False):
             md_file = md_file.replace(".md", "")
 
         if is_extra_folder:
-            md_file = os.path.split(root)[-1] + md_file
+            md_file = os.path.join(os.path.split(root)[-1], md_file)
 
         md_files.append({"filename": md_file, "content": content})
 
