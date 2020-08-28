@@ -19,12 +19,12 @@ def find_files(vault_root, extra_folders, no_extension=False):
     # Find all markdown-files in each extra folder.
     for folder in extra_folders:
         md_files += find_md_files(os.path.join(vault_root, folder),
-                                  no_extension)
+                                  no_extension, is_extra_folder=True)
 
     return md_files
 
 
-def find_md_files(root, no_extension):
+def find_md_files(root, no_extension, is_extra_folder=False):
     md_files = []
     for md_file in os.listdir(root):
         if not md_file.endswith(".md"):
@@ -35,6 +35,9 @@ def find_md_files(root, no_extension):
 
         if no_extension:
             md_file = md_file.replace(".md", "")
+
+        if is_extra_folder:
+            md_file = os.path.split(root)[-1] + md_file
 
         md_files.append({"filename": md_file, "content": content})
 
