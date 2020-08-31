@@ -18,7 +18,7 @@ class Vault:
         for note in self.notes:
             backlinks = find_backlinks(note["filename"], self.notes)
             if backlinks:
-                note["content"] += "<div class=\"backlinks\" markdown=\"1\">\n## Backlinks\n\n"
+                note["content"] += "\n<div class=\"backlinks\" markdown=\"1\">\n## Backlinks\n\n"
                 for backlink in backlinks:
                     note["content"] += f"- {md_link(backlink['text'], backlink['link'])}\n"
                 note["content"] += "</div>"
