@@ -10,7 +10,6 @@ setup(name='obsidian-html',
       packages=['obsidian_html'],
       install_requires=[
           'markdown2',
-          'regex',
-          'pygments'
+          'regex'
       ],
       zip_safe=False)
