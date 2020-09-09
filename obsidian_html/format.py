@@ -78,7 +78,9 @@ def htmlify(document):
         # Have to support Markdown inside html tags
         "markdown-in-html",
         # Disable formatting via the _ character. Necessary for code an TeX
-        "code-friendly"
+        "code-friendly",
+        # Support for Obsidian's footnote syntax
+        "footnotes"
     ]
 
     html = markdown2.markdown(document, extras=markdown2_extras)
