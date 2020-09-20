@@ -5,7 +5,7 @@ from .format import htmlify
 
 class Vault:
     def __init__(self, vault_root, extra_folders=[], html_template=None):
-        self.vault_root
+        self.vault_root = vault_root
         self.notes = find_files(vault_root, extra_folders, no_extension=True)
         self.extra_folders = extra_folders
         self._add_backlinks()
