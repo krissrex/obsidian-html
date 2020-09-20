@@ -16,7 +16,7 @@ setup(
     zip_safe=False,
     entry_points={
         'console_scripts': [
-            obsidian_html=obsidian_html:main
+            'obsidian-html=obsidian_html:main'
         ]
     }
 )
