@@ -67,6 +67,22 @@ By loading KaTeX in the HTML template and initializing it with `$` and `$$` as d
 </code>
 </details>
 
+### Syntax highlighting of code blocks
+
+Using [highlight.js](https://highlightjs.org/), syntax highlighting is easily achieved.
+
+
+<details>
+<summary>Just add this to the bottom of you template's body</summary>
+<code>
+<!-- Syntax highlighting through highlight.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/github-gist.css">
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</code>
+</details>
+
 ## Deploying vault with GitHub Actions
 
 Make a GitHub Actions workflow using the YAML below, and your vault will be published to GitHub Pages every time you push to the repository.
@@ -93,30 +109,27 @@ Make a GitHub Actions workflow using the YAML below, and your vault will be publ
           with:
             python-version: 3.8
 
-        - name: Install obsidian-html
-          run: |
-            python -m pip install --upgrade pip
-            pip install git+https://github.com/kmaasrud/obsidian-html.git
-            
-        - name: Generate HTML through obsidian-html
-          run: python -m obsidian_html <path to vault> -o ./html
+      - name: Install obsidian-html
+        run: |
+          python -m pip install --upgrade pip
+          pip install git+https://github.com/kmaasrud/obsidian-html.git
+          
+      - name: Generate HTML through obsidian-html
+        run: obsidian-html ./vault -o ./out -t ./template.html -d daily
 
-        - name: Deploy
-          uses: s0/git-publish-subdir-action@develop
-          env:
-            REPO: self
-            BRANCH: gh-pages
-            FOLDER: html
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: out
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     ```
 
 ## To do
 
-- [x] Generate backlinks
-- [x] Support HTML template (which will make adding CSS much easier)
 - [ ] Support local attachments
 - [ ] Support the `![[]]` embedding syntax (perhaps using iframe or some similar method)
-- [x] Write a GitHub Actions workflow to automate the process from vault to a publish GitHub Pages page
 - [ ] Support extra features added by the user through YAML metadata
 
 ## Known issues
