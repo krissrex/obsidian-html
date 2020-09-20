@@ -14,7 +14,7 @@ def main():
                         help="Path to the vault root")
 
     parser.add_argument("-o", "--output_dir",
-                        default=sys.argv[1] + "/html",
+                        default="",
                         help="Path to place the generated HTML")
 
     parser.add_argument("-t", "--template",
