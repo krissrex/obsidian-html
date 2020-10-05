@@ -30,7 +30,7 @@ def find_md_files(root, no_extension, is_extra_folder=False):
         if not md_file.endswith(".md"):
             continue
 
-        with open(os.path.join(root, md_file)) as f:
+        with open(os.path.join(root, md_file), encoding="utf8") as f:
             content = f.read()
 
         if no_extension:
