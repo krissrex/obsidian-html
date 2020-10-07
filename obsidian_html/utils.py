@@ -26,7 +26,7 @@ def find_files(vault_root, extra_folders, no_extension=False):
 def find_md_files(root, no_extension, is_extra_folder=False):
     md_files = []
     for md_file in os.listdir(root):
-        if not (md_file.endswith(".md") and os.path.isfile(md_file)):
+        if not (md_file.endswith(".md") and os.path.isfile(os.path.join(root, md_file))):
             continue
 
         with open(os.path.join(root, md_file), encoding="utf8") as f:
